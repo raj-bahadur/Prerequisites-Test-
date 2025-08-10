@@ -1,0 +1,265 @@
+Question 1
+Multiplication: n*m*k
+Addtions: n*m*(k-1)
+Per elements of the matrix we need k multiplications and there are m*n elements.
+Per element of the metric we are adding k terms which requires k-1 additions and there are m*n elements.
+Question 2
+list of lists
+import time
+start_time = time.time()
+A = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+B = [
+    [7, 8],
+    [9, 10],
+    [11, 12]
+]
+
+result= [ [0,0],[0,0] ]
+    
+
+for i in range(len(A)):
+    for j in range(len(B[0])):
+        for k in range(len(B)):
+            result[i][j] += A[i][k]*B[k][j]
+
+for r in result:
+    print(r)
+
+end_time = time.time()
+print(f"Program ran in {end_time - start_time:.6f} seconds")
+!pip install numpy
+Numpy
+import time
+start_time = time.time()
+import numpy as np
+a = np.array([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+b = np.array([
+    [7, 8],
+    [9, 10],
+    [11, 12]
+])
+R = a.dot(b)
+print(R)
+end_time = time.time()
+print(f"Program ran in {end_time - start_time:.6f} seconds")
+Numpy was faster because NumPy stores arrays in contiguous memory blocks, which the CPU can process more efficiently.
+Question 4:
+\[
+f(x, y) = x^2 y + y^3 \sin(x)
+\]
+
+\[
+\nabla f(x, y) =
+\left( 
+\frac{\partial f}{\partial x},\ 
+\frac{\partial f}{\partial y}
+\right)
+\]
+
+\[
+\frac{\partial f}{\partial x} 
+= \frac{\partial}{\partial x} \left( x^2 y \right) 
++ \frac{\partial}{\partial x} \left( y^3 \sin(x) \right) 
+= 2xy + y^3 \cos(x)
+\]
+
+\[
+\frac{\partial f}{\partial y} 
+= \frac{\partial}{\partial y} \left( x^2 y \right) 
++ \frac{\partial}{\partial y} \left( y^3 \sin(x) \right) 
+= x^2 + 3y^2 \sin(x)
+\]
+
+\[
+\boxed{
+\nabla f(x, y) = 
+\left( 
+2xy + y^3 \cos(x),\ 
+x^2 + 3y^2 \sin(x)
+\right)
+}
+\]
+!pip install sympy
+
+Question 6
+import sympy as sp
+
+
+sp.init_printing(use_unicode=True)
+
+
+x, y = sp.symbols('x y')
+
+
+f = x**2 * y + y**3 * sp.sin(x)
+
+print("Original function f(x, y):")
+display(f)
+
+df_dx = sp.diff(f, x)
+
+df_dy = sp.diff(f, y)
+
+
+print("\nPartial derivative with respect to x (∂f/∂x):")
+display(df_dx)
+
+print("\nPartial derivative with respect to y (∂f/∂y):")
+display(df_dy)
+
+Question 7
+import json
+
+student_records = {
+    "2022": {
+        "Branch 1": [
+            {
+                "Roll Number": 1,
+                "Name": "Alice",
+                "Marks": {
+                    "Maths": 95,
+                    "English": 88,
+                    "Science": 92
+                }
+            },
+            {
+                "Roll Number": 2,
+                "Name": "Bob",
+                "Marks": {
+                    "Maths": 78,
+                    "English": 82,
+                    "Science": 85
+                }
+            }
+        ],
+        "Branch 2": [
+            {
+                "Roll Number": 1,
+                "Name": "Charlie",
+                "Marks": {
+                    "Maths": 89,
+                    "English": 91,
+                    "Science": 88
+                }
+            }
+        ]
+    },
+    "2023": {
+        "Branch 1": [
+            {
+                "Roll Number": 1,
+                "Name": "Alice",
+                "Marks": {
+                    "Maths": 95,
+                    "English": 88,
+                    "Science": 92
+                }
+            },
+            {
+                "Roll Number": 2,
+                "Name": "Bob",
+                "Marks": {
+                    "Maths": 78,
+                    "English": 82,
+                    "Science": 85
+                }
+            }
+        ],
+        "Branch 2": []
+    },
+    "2024": {
+        "Branch 1": [],
+        "Branch 2": []
+    },
+    "2025": {
+        "Branch 1": [],
+        "Branch 2": []
+    }
+}
+
+
+first_student_marks = student_records["2022"]["Branch 1"][0]["Marks"]
+print("Example: Marks of the first student in 2022, Branch 1:")
+print(first_student_marks)
+
+print("\n--- Full Student Records Dictionary ---")
+print(json.dumps(student_records, indent=4))
+
+Question 8
+!pip install matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0.5,100,199)
+y = x
+plt.plot(x,y)
+plt.title("y=x")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0.5,100,199)
+y = x*x
+plt.plot(x,y)
+plt.title("y=x^2")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0.5,100,199)
+y = (x*x*x)/100
+plt.plot(x,y)
+plt.title("y=x^3/100")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0.5,100,199)
+y = np.sin(x)
+plt.plot(x,y)
+plt.title("y=sin(x)")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0.5,100,199)
+y = np.sin(x)/x
+plt.plot(x,y)
+plt.title("y=sin(x)/x")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0.5,100,199)
+y = np.log(x)
+plt.plot(x,y)
+plt.title("y=log(x)")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0.5,100,199)
+y = np.exp(x)
+plt.plot(x,y)
+plt.title("y=e^x")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+
